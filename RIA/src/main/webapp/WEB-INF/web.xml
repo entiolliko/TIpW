@@ -54,7 +54,6 @@
 		<url-pattern>/GetAllSimpleProducts</url-pattern>
 		<url-pattern>/GetOptionsForProduct</url-pattern>
 		<url-pattern>/GetPreventivesCreatedByUser</url-pattern>
-		<url-pattern>/LogOut</url-pattern>
 	</filter-mapping>
 	
 	<filter-mapping>
@@ -62,7 +61,6 @@
 		<url-pattern>/GetPreventivesManagedByEmployee</url-pattern>
 		<url-pattern>/GetUnmanagedPreventiveInfo</url-pattern>
 		<url-pattern>/GetUnmanagedPreventives</url-pattern>
-		<url-pattern>/LogOut</url-pattern>
 		<url-pattern>/UpdatePreventivePrice</url-pattern>
 	</filter-mapping>
  

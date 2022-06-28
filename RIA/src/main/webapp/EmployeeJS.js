@@ -4,6 +4,10 @@
 var clicked = false;
 
 window.addEventListener("load", function () {
+	if (sessionStorage.getItem("username") == null) {
+			window.location.href = "index.html";
+	}
+	
 	//Set up username header
 	let employeeUsernameHeader = this.document.getElementById("employeeUsernameHeader");
 	let text = document.createTextNode(this.sessionStorage.getItem("username"));
@@ -32,14 +36,19 @@ window.addEventListener("load", function () {
 
 //Log Out Button Handler
 function logOutButtonClicked() {
-	var xmlHttpRequest = new XMLHttpRequest();
-	xmlHttpRequest.onReadyStateChange = function () {
-		if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status != 200) {
-			(document.getElementById("errMessage")).textContent = "There has been an error when loging out";
+	$.ajax({
+		'url': 'LogOut',
+		'type': 'GET',
+		'success': function (data) {
+			window.location.href = "index.html";
+			
+			window.sessionStorage.removeItem('username');
+			window.sessionStorage.removeItem('role');
+		},
+		'error': function (error) {
+			(document.getElementById("errMessage")).textContent = "There has been an error when loging out.";
 		}
-	};
-	xmlHttpRequest.open("GET", "LogOut");
-	xmlHttpRequest.send();
+	});
 }
 
 function readEmployeePreventives(){
