@@ -55,7 +55,8 @@ public class UpdatePreventivePrice extends HttpServlet {
 		String price = request.getParameter("price"); 
 		PreventiveDAO preventiveDAO = new PreventiveDAO(connection);
 		
-		if(Float.parseFloat(price) <= 0) {
+		try{
+			if(Float.parseFloat(price) <= 0) {
 			user.addLastVisitedPage("", "", "");
 			
 			String Path ="/WEB-INF/ErrorPage.html";
@@ -64,16 +65,22 @@ public class UpdatePreventivePrice extends HttpServlet {
 			ctx.setVariable("errorMessage", "The price must be bigger than 0");
 			templateEngine.process(Path, ctx, response.getWriter());
 			return;
-		}
-		
-		if(Float.parseFloat(price) > 0) {
-			try {
-				preventiveDAO.updatePriceOfPreventive(preventiveID, user.getUsername(), Float.parseFloat(price));
-			}catch(SQLException e) {
-				response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "The server is not available. Impossible to update the price of the preventive.");
-				return;
-				
+			}else{
+				try {
+					preventiveDAO.updatePriceOfPreventive(preventiveID, user.getUsername(), Float.parseFloat(price));
+				}catch(SQLException e) {
+					response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "The server is not available. Impossible to update the price of the preventive.");
+					return;
+					
+				}
 			}
+		}catch(Exception e) {
+			String Path ="/WEB-INF/ErrorPage.html";
+			ServletContext servletContext = getServletContext();
+			final WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
+			ctx.setVariable("errorMessage", "The price must be bigger than 0");
+			templateEngine.process(Path, ctx, response.getWriter());
+			return;
 		}
 		
 

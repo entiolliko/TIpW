@@ -38,13 +38,13 @@ public class GetPreventivesManagedByEmployee extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Preventive> preventivesMenagedByEmployee = new ArrayList<>();
+		List<Preventive> preventivesManagedByEmployee = new ArrayList<>();
 		PreventiveDAO preventiveDAO = new PreventiveDAO(connection);
 		
 		User user = (User)request.getSession().getAttribute("user");
 		
 		try {
-			preventivesMenagedByEmployee = preventiveDAO.getPreventivesByEmployee(user.getUsername());
+			preventivesManagedByEmployee = preventiveDAO.getPreventivesByEmployee(user.getUsername());
 		}
 		catch(SQLException e){
 			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
@@ -52,7 +52,7 @@ public class GetPreventivesManagedByEmployee extends HttpServlet {
 			return;
 		}
 		
-		String serialized_courses = new Gson().toJson(preventivesMenagedByEmployee);
+		String serialized_courses = new Gson().toJson(preventivesManagedByEmployee);
 		response.setStatus(HttpServletResponse.SC_OK);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");

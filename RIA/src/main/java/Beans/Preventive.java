@@ -1,21 +1,21 @@
 package Beans;
 
 public class Preventive {
-	private String preventiveID; //ID da 10 caratteri
-	private String productName; //Il nome del prodotto
+	private String preventiveID;
 	private String productCode;
+	private String productName;
 	
 	
 	public String getPreventiveID() {
 		return this.preventiveID;
 	}
 	
-	public String getProductName() {
-		return this.productName;
-	}
-	
 	public String getProductCode() {
 		return this.productCode;
+	}
+	
+	public String getProductName() {
+		return this.productName;
 	}
 	
 	public void setPreventiveID(String preventiveID) {

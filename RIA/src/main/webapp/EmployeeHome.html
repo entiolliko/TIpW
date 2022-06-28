@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
+    <script src="EmployeeJS.js" defer></script>
+    <script src="jquery.js" defer></script>
     <title>Home Page Employee</title>
     <link rel="stylesheet" type="text/css" media="all" href="CSS/general.css" />
     <link rel="stylesheet" type="text/css" media="all" href="CSS/start.css" />
@@ -15,6 +17,7 @@
     <form>
         <input id="logOutButton" type="submit" value="Log Out" />
     </form>
+    
     <h5 id="employeeUsernameHeader"></h5>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
@@ -24,7 +27,7 @@
             <th>Preventive ID</th>
             <th>Product Code</th>
             <th>Product Name</th>
-            <th>Link</th>
+            <th>Preventive Information</th>
         </tr>
         <tbody id="managedPreventivesTableBody">
         </tbody>
@@ -38,12 +41,42 @@
             <th>Preventive ID</th>
             <th>Product Code</th>
             <th>Product Name</th>
-            <th>Price</th>
+            <th></th>
         </tr>
         <tbody id="unmanagedPreventivesTableBody">   
         </tbody>
     </table>
     <p>&nbsp;</p>
+    
+    <div id="preventiveInfoDiv" class="hiddenElement">
+    	<h3 id="errMessage"></h3>
+    	 
+        <h1 id="pageName"><strong>Preventive Info</strong></h1>
+        <p id="preventiveIDInfo"><strong>Preventive ID:</strong></p>
+        <p id="productCodeInfo"><strong>Product Code:</strong></p>
+        <p id="productNameInfo"><strong>Product Name:</strong></p>
+        <p id="productImageLabel"><strong>Product Image:</strong></p>
+        <p id="productImageInfo"></p>
+        <p id="clientUsernameInfo"><strong>Client Username:</strong></p>
+        <p id="preventivePriceInfo"><strong>Price:</strong></p>
+        <p id="employeeUsernameInfo"><strong>Employee Username:</strong></p>
+        <p><strong>Option for preventive:</strong></p>
+        <table>
+            <tr>
+                <th>Option Code</th>
+                <th>Option Name</th>
+                <th>Option Type</th>
+                <th>Product Code</th>
+            </tr>
+            <tbody id="optionInfoTableBody">
+            </tbody>
+        </table>
+        <form>
+	        <input type="text" id="priceInput" placeholder="Insert Price"/>
+	        <input type="button" id="insertPriceButton" value="Insert Price" class="normalButton"/>
+	        <input type="button" id="closeInfoPageButton" value="Close Info Page" class="normalButton"/>
+	    </form>
+    </div>
 </body>
 
 </html>

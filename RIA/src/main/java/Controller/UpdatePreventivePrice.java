@@ -44,22 +44,30 @@ public class UpdatePreventivePrice extends HttpServlet {
 		String preventiveID = request.getParameter("preventiveID");
 		String price = request.getParameter("price"); 
 		PreventiveDAO preventiveDAO = new PreventiveDAO(connection);
-		
-		if(Float.parseFloat(price) <= 0) {
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			response.getWriter().println("The price must be greater than 0");
-			return;
-		}
-		
-		if(Float.parseFloat(price) > 0) {
-			try {
-				preventiveDAO.updatePriceOfPreventive(preventiveID, user.getUsername(), Float.parseFloat(price));
-				response.setStatus(HttpServletResponse.SC_OK);
-			}catch(SQLException e) {
-				response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-				response.getWriter().println("It was not possible to update the preventive price");
+		System.out.println(preventiveID);
+		System.out.println(price);
+		try{
+			if(preventiveID == null) {
+				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+				response.getWriter().println("The preventive ID must be non null");
 				return;
+			}else if(Float.parseFloat(price) <= 0) {
+				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+				response.getWriter().println("The price must be higher than 0");
+				return;
+			}else{
+				try {
+					preventiveDAO.updatePriceOfPreventive(preventiveID, user.getUsername(), Float.parseFloat(price));
+				}catch(SQLException e) {
+					response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+					response.getWriter().println("Not possible to update price");
+					return;
+				}
 			}
+		}catch(Exception e) {
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			response.getWriter().println("There has been an internal error. Not possible to update price");
+			return;
 		}
 	}
 	

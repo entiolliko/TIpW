@@ -48,7 +48,6 @@ public class GetUnmanagedPreventives extends HttpServlet {
 		}
 		
 		String serialized_courses = new Gson().toJson(unmanagedPreventives);
-		response.setStatus(HttpServletResponse.SC_OK);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(serialized_courses);
