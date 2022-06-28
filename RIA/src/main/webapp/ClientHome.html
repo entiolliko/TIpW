@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="ClientJS.js" defer></script>
+    <script src="jquery.js" defer></script>
+    <title>Home Page Client</title>
+    <link rel="stylesheet" type="text/css" media="all" href="CSS/general.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="CSS/start.css" />
+</head>
+
+<body>
+
+    <input id="goBackButton" onClick="history.back()" type="button" value="Go Back" />
+    <h5 id="clientUsernameHeader"></h5>
+    <input id="logOutButton" type="button" value="Log Out" />
+
+    <h5 id="errMessage"></h5>
+    <h3><strong>Select a product code to create a new preventive: </strong></h3>
+    <select id="productCodeSelect">
+        <option disabled selected> -- select a product -- </option>
+    </select>
+    <select id="optionsForProduct">
+        <option disabled selected> -- select option -- </option>
+    </select>
+    <input id="createPreventiveButton" type="button" value="Create New Preventive"></input>
+    <table id="chosenOptionsTable">
+        <tr>
+            <th>Chosen Options</th>
+        </tr>
+        <tbody id="chosenOptionsForProduct">
+        </tbody>
+    </table>
+
+    <div id="clientPreventivesDiv">
+        <h3><strong>Your Preventives</strong></h3>
+        <table>
+            <tr>
+                <th>Preventive ID</th>
+                <th>Product Code</th>
+                <th>Product Name</th>
+                <th>Link</th>
+            </tr>
+            <tbody id="clientPreventivesTableBody">
+            </tbody>
+        </table>
+    </div>
+    <div id="preventiveInfoDiv" class="hiddenElement">
+        <h1><strong>Preventive Info</strong></h1>
+        <p id="preventiveIDInfo"><strong>Preventive ID:</strong></p>
+        <p id="productCodeInfo"><strong>Product Code:</strong></p>
+        <p id="productNameInfo"><strong>Product Name:</strong></p>
+        <p><strong>Product Image:</strong></p>
+        <p id="productImageInfo"></p>
+        <p>&nbsp;</p>
+        <p id="clientUsernameInfo"><strong>Client Username:</strong></p>
+        <p id="preventivePriceInfo"><strong>Price:</strong></p>
+        <p id="employeeUsernameInfo"><strong>Employee Username:</strong></p>
+        <p><strong>Option for preventive:</strong></p>
+        <table>
+            <tr>
+                <th>Option Code</th>
+                <th>Option Name</th>
+                <th>Option Type</th>
+                <th>Product Code</th>
+            </tr>
+            <tbody id="optionInfoTableBody">
+            </tbody>
+        </table>
+        <input type="button" id="closeInfoPageButton" value="Close Info Page" class="normalButton"/>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="indexJS.js" defer></script>
+    <script src="Utils.js" defer></script>
+    <link rel="stylesheet" type="text/css" media="all" href="CSS/general.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="CSS/start.css" />
+    <title>Login page</title>
+</head>
+
+<body class=start>
+    <p>&nbsp;</p>
+    <div class="basic">
+        <div class="welcome">
+            <h1><span>HOME PAGE</span></h1>
+        </div>
+
+        <div class="divlogin">
+            <h2>Please Log In</h2>
+            <form id="logInForm">
+                <input id="logInUsername" name="username" required type="text" placeholder="Insert Your Username" /> <br>
+                <input id="logInPassword" name="password" required type="password" placeholder="Insert Your Password" /> <br>
+            </form>
+            <input id="logInButton" type="button" value="Login" /> <br>
+            <span id="logInErrorMessage"></span>
+        </div>
+
+        <div class="divlogin">
+            <h2>Please Register</h2>
+            <form id="registerForm">
+                <input id="registerUsername" required type="text" placeholder="Insert the desired username" /> <br>
+                <input id="registerPassword" required type="password" placeholder="Insert the desired password" /> <br>
+                <input id="registerPasswordCheck" required type="password" placeholder="Insert the desired password again" /> <br>
+                <select id="userRole" name="userRole">
+                    <option value="Client">Client</option>
+                    <option value="Employee">Employee</option>
+                 </select><br>
+            </form>
+            <input id="registerButton" type="button" value="Register" /> <br>
+            <span id="regErrorMessage"></span>
+        </div>
+    </div>
+</body>
+
+</html>

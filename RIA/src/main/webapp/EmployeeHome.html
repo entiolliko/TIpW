@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Home Page Employee</title>
+    <link rel="stylesheet" type="text/css" media="all" href="CSS/general.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="CSS/start.css" />
+</head>
+
+<body>
+    <form>
+        <input id="goBackButton" onClick="history.back()" type="submit" value="Go Back" />
+    </form>
+    <form>
+        <input id="logOutButton" type="submit" value="Log Out" />
+    </form>
+    <h5 id="employeeUsernameHeader"></h5>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3><strong>Preventives managed by you</strong></h3>
+    <table>
+        <tr>
+            <th>Preventive ID</th>
+            <th>Product Code</th>
+            <th>Product Name</th>
+            <th>Link</th>
+        </tr>
+        <tbody id="managedPreventivesTableBody">
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3><strong>Preventives not prices</strong></h3>
+    <table>
+        <tr>
+            <th>Preventive ID</th>
+            <th>Product Code</th>
+            <th>Product Name</th>
+            <th>Price</th>
+        </tr>
+        <tbody id="unmanagedPreventivesTableBody">   
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+</body>
+
+</html>

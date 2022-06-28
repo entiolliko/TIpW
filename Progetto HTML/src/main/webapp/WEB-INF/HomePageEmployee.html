@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Home Page Employee</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="../CSS/general.css" th:href="@{/CSS/general.css}" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../CSS/start.css" th:href="@{/CSS/start.css}" />
+</head>
+<body>
+	<form method="GET" th:action="${session.user.getLastVisitedPage()}">
+		<input type="hidden" th:name="${session.user.getParamName()}" th:value="${session.user.getParam()}"/>
+		<input type="hidden" name="goBackButton" value = ""/>
+		<input id="goBackButton" type="submit" value="Go Back &#11144" />
+	</form>
+	<form action="LogOut" method="POST"><input id="logOutButton" type="submit" value="Log Out &#10008" /></form>
+	<h5><span th:text="${session.user.getUsername()}"></span></h5>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<h3><strong>Preventives managed by you</strong></h3>
+	<table>
+		<tr>
+    		<th>Preventive ID</th>
+    		<th>Product Code</th>
+    		<th>Product Name</th>
+    		<th>Link</th>
+  		</tr>
+		<tbody>
+			<tr th:each="preventive : ${preventives}">
+				<td th:text="${preventive.getPreventiveID()}">PlaceHolder1</td>
+				<td th:text="${preventive.getProductCode()}">PlaceHolder2</td>
+				<td th:text="${preventive.getProductName()}">PlaceHolder3</td>
+				<td>
+					<form action="GetInformationAboutPreventive" method="GET">
+						<button class="button7" name="preventiveID" type="submit" th:value="${preventive.getPreventiveID()}">See full preventive</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<h3><strong>Preventives not prices</strong></h3>
+	<table>
+		<tr>
+    		<th>Preventive ID</th>
+    		<th>Product Code</th>
+    		<th>Product Name</th>
+    		<th>Price</th>
+  		</tr>
+		<tbody>
+			<tr th:each="unamangedPreventive : ${unmanagedPreventives}">
+				<td th:text="${unamangedPreventive.getPreventiveID()}">PlaceHolder1</td>
+				<td th:text="${unamangedPreventive.getProductCode()}">PlaceHolder2</td>
+				<td th:text="${unamangedPreventive.getProductName()}">PlaceHolder3</td>
+				<td>
+					<form action="GetPricingPage" method="get">
+						<button class="button3" name="preventiveID" type="submit" th:value="${unamangedPreventive.getPreventiveID()}">Price</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>&nbsp;</p>
+</body>
+</html>
