@@ -43,7 +43,7 @@
 			<form action="UpdatePreventivePrice" method="POST">
 				<input type="hidden" name="preventiveID" th:value="${preventiveInfo.getPreventiveID()}" />
 				<input name="price" required type="text" placeholder="Insert the price" />
-				<input id="pricePreventive" type="submit" value="Send Price"/>
+				<input id="pricePreventive" type="submit" value="Send Price &#x2192"/>
 			</form>
 			<span th:text="${errorMessagePricing}"></span>
 		</div>

@@ -87,3 +87,31 @@ button:hover{
 .button7:hover{
 	background-color:#729fcf;
 }
+
+#pricePreventive{
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 6px;
+	background-color:#177245;
+	border: none;
+	color:white;
+}
+
+#pricePreventive:hover{
+	border-radius: 6px;
+	background-color: #008F39;
+}
+
+#addPreventiveButton {
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 6px;
+	background-color:#177245;
+	border: none;
+	color:white;
+}
+
+#addPreventiveButton:hover{
+	border-radius: 6px;
+	background-color: #008F39;
+}
