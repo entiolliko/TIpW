@@ -6,6 +6,8 @@ var clicked = false;
 window.addEventListener("load", function () {
 	if (sessionStorage.getItem("username") == null) {
 			window.location.href = "index.html";
+	} else if(sessionStorage.getItem("role") == "Client"){
+		window.location.href = "ClientHome.html";
 	}
 	
 	//Set up username header

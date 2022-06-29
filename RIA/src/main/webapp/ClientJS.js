@@ -4,9 +4,13 @@
 var optionList = [];
 var clicked = false;
 
+console.log("Sono qui");
 window.addEventListener("load", function () {
+	console.log(sessionStorage.getItem("role"));
 	if (sessionStorage.getItem("username") == null) {
 			window.location.href = "index.html";
+	} else if (sessionStorage.getItem("role") == "Employee"){
+		window.location.href = "EmployeeHome.html";
 	}
 	
 	//Set up username header
