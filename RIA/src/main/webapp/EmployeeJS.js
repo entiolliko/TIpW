@@ -89,7 +89,7 @@ function readEmployeePreventives(){
 			}
 		},
 		'error': function (error) {
-			console.log(error.responseText);
+			(document.getElementById("errMessage")).textContent = "It wasn't possible to get the preventives managed by you.\n" + error.responseText;
 		}
 	});
 }
@@ -103,7 +103,7 @@ function getPreventiveInfo(preventiveID){
 			addDataToInfo(true, data);
 		},
 		'error': function (error) {
-			console.log("C'è stato un error: " + error.responseText);
+			(document.getElementById("errMessage")).textContent = "It wasn't possible to get the informations about the preventive': " + error.responseText;
 		}
 	});
 }
@@ -233,7 +233,7 @@ function readUnManagedPreventives(){
 			}
 		},
 		'error': function (error) {
-			console.log(error.responseText);
+			(document.getElementById("errMessage")).textContent = "It wasn't possible to get the unmanaged preventives'\n" + error.responseText;
 		}
 	});
 }
@@ -247,7 +247,7 @@ function getPreventiveInfoForPricing(preventiveID){
 			addDataToInfo(false, data);
 		},
 		'error': function (error) {
-			console.log("C'è stato un error: " + error.responseText);
+			(document.getElementById("errMessage")).textContent = "It wasn't possible to show the page to price the preventive': " + error.responseText;
 		}
 	});
 }
@@ -277,7 +277,7 @@ function insertPriceButtonClicked(){
 			readUnManagedPreventives();
 		},
 		'error': function (error) {
-			console.log("There has been an error: " + error.responseText);
+			(document.getElementById("errMessage")).textContent = "It wasn't possible to update the price of the preventive.\n'" + error.responseText;
 		}
 	});
 }

@@ -15,7 +15,6 @@ function logInButtonClicked(e) {
     var logInUsername = document.getElementById("logInUsername");
     var logInPassword = document.getElementById("logInPassword");
     if (logInUsername === null || logInUsername.value === "" || (logInUsername.value).indexOf(' ') >= 0) {
-		console.log("sono qui");
         (document.getElementById("logInErrorMessage")).textContent = "Please insert a username with no spaces";
         return;
     } if (logInPassword === null || logInPassword.value === "" || (logInPassword.value).indexOf(' ') >= 0) {
@@ -42,7 +41,6 @@ function logInButtonClicked(e) {
             }
  		},
 		'error': function (error) {
-			console.log(error);
 	         (document.getElementById("logInErrorMessage")).textContent = error.responseText;
 		}
 	});

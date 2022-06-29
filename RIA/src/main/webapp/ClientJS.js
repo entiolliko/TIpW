@@ -3,10 +3,9 @@
 
 var optionList = [];
 var clicked = false;
+let productCToSimpleProductMap;
 
-console.log("Sono qui");
 window.addEventListener("load", function () {
-	console.log(sessionStorage.getItem("role"));
 	if (sessionStorage.getItem("username") == null) {
 			window.location.href = "index.html";
 	} else if (sessionStorage.getItem("role") == "Employee"){
@@ -49,13 +48,12 @@ function logOutButtonClicked(e) {
 		'url': 'LogOut',
 		'type': 'GET',
 		'success': function (data) {
-			console.log(data);
 			window.location.href = "index.html";
 			
 			window.sessionStorage.removeItem('username');
 			window.sessionStorage.removeItem('role');
 		},
-		'error': function (error) {
+		'error': function () {
 			(document.getElementById("errMessage")).textContent = "There has been an error when loging out.";
 		}
 	});
@@ -67,50 +65,45 @@ function updateProductList() {
 		'url': 'GetAllSimpleProducts',
 		'type': 'GET',
 		'success': function (data) {
-			for (let i = 0; i < data.length; i++) {
+			productCToSimpleProductMap = new Map(Object.entries(data));
+			for (let x in data) {
 				let child = document.createElement("option");
-				child.id = data[i].productCode;
-				child.innerHTML = data[i].productCode + " : " + data[i].productName;
+				child.id = data[x].productCode;
+				child.innerHTML = data[x].productCode + " : " + data[x].productName;
+				child.onclick = renderOptionsForSelectedProduct;
 				(document.getElementById("productCodeSelect")).appendChild(child);
 			}
 		},
 		'error': function (error) {
-			console.log(error.responseText);
+			(document.getElementById("errMessage")).textContent = error.responseText;
 		}
 	});
 }
 
 function renderOptionsForSelectedProduct() {
-	$.ajax({
-		'url': 'GetOptionsForProduct',
-		'data': "productCode=" + document.getElementById("productCodeSelect")
-			.options[document.getElementById("productCodeSelect").selectedIndex].id,
-		'type': 'GET',
-		'success': function (data) {
-			let options = document.getElementById("optionsForProduct");
-			options.innerHTML = '';
-			
-			let selectedOptions = document.getElementById("chosenOptionsForProduct");
-			selectedOptions.innerHTML = '';
-			optionList = [];
+	
+	var productCode = document.getElementById("productCodeSelect").options[document.getElementById("productCodeSelect").selectedIndex].id;;
+	let data = productCToSimpleProductMap.get(productCode).options;
+	
+	let options = document.getElementById("optionsForProduct");
+	options.innerHTML = '';
+	
+	let selectedOptions = document.getElementById("chosenOptionsForProduct");
+	selectedOptions.innerHTML = '';
+	optionList = [];
 
-			let child = document.createElement("option");
-			child.selected = true;
-			child.disabled = true;
-			child.innerHTML = " -- select option -- ";
-			options.appendChild(child);
+	let child = document.createElement("option");
+	child.selected = true;
+	child.disabled = true;
+	child.innerHTML = " -- select option -- ";
+	options.appendChild(child);
 
-			for (let i = 0; i < data.length; i++) {
-				let child = document.createElement("option");
-				child.id = data[i];
-				child.innerHTML = data[i];
-				options.appendChild(child);
-			}
-		},
-		'error': function (error) {
-			console.log(error.responseText);
-		}
-	});
+	for (let i = 0; i < data.length; i++) {
+		let child = document.createElement("option");
+		child.id = data[i];
+		child.innerHTML = data[i];
+		options.appendChild(child);
+	}
 }
 
 function addSelectedOption(){
@@ -161,7 +154,7 @@ function createPreventive(){
 		'data': "productCode=" + productCode + "&options=" + serializedOptionList,
 		'success': readClientPreventives,
 		'error': function (error) {
-			console.log(error.responseText);
+			(document.getElementById("errMessage")).textContent = error.responseText;
 		}
 	});
 	optionList = [];
@@ -204,7 +197,7 @@ function readClientPreventives(){
 			}
 		},
 		'error': function (error) {
-			console.log(error.responseText);
+			(document.getElementById("errMessage")).textContent = error.responseText;
 		}
 	});
 }
@@ -215,11 +208,10 @@ function getClientPreventiveInfo(preventiveID){
 		'type': 'GET',
 		'data': "preventiveID=" + preventiveID,
 		'success': function(data){
-			console.log(data);
 			addDataToInfo(data);
 		},
 		'error': function (error) {
-			console.log("C'è stato un error: " + error.responseText);
+			(document.getElementById("errMessage")).textContent = "C'è stato un error: " + error.responseText;
 		}
 	});
 }

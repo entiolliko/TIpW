@@ -51,8 +51,9 @@ public class ProductDAO {
 		return isPresent;
 	}
 	
-	public List<SimpleProduct> getAllSimpleProducts() throws SQLException{
-		List<SimpleProduct> products = new ArrayList<>();
+	public Map<String, SimpleProduct> getAllSimpleProducts() throws SQLException{
+		Map<String, SimpleProduct> products = new HashMap<>();
+		String tempKey;
 		SimpleProduct temp;
 		
 		String query = "SELECT Code, Name FROM TIW_Progetto.PRODUCT";
@@ -60,10 +61,12 @@ public class ProductDAO {
 		try (PreparedStatement pstatement = connection.prepareStatement(query)) {
 			try (ResultSet result = pstatement.executeQuery()) {
 				while(result.next()) {
+					tempKey = result.getString("Code");
 					temp = new SimpleProduct();
 					temp.setProductCode(result.getString("Code"));
 					temp.setProductName(result.getString("Name"));
-					products.add(temp);
+					temp.setOptions((getOptionsByProductID(result.getString("Code")).stream().map(x -> x.getOptionCode()).toList()));
+					products.put(tempKey, temp);
 				}
 			}
 		}
