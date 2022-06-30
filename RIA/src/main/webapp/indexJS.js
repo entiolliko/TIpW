@@ -27,7 +27,8 @@ function logInButtonClicked(e) {
 		'type': 'POST',
 		'data': "username=" + logInUsername.value + "&" + "password=" + logInPassword.value,
 		'success': function (data) {
-        	var message = JSON.parse(data);
+			console.log(data); 
+        	var message = data;
             sessionStorage.setItem("username", message.username);
             sessionStorage.setItem("role", message.role);
             if (message.role == "Client") {

@@ -12,39 +12,41 @@
 
 <body>
 
+	<input type="button" value="Close Info Page" class="hiddenElement" id="closeInfoPageButton"/>
     <h5 id="clientUsernameHeader"></h5>
     <input id="logOutButton" type="button" value="Log Out" />
-
     <h5 id="errMessage"></h5>
-    <h3><strong>Select a product code to create a new preventive: </strong></h3>
-    <select id="productCodeSelect">
-        <option disabled selected> -- select a product -- </option>
-    </select>
-    <select id="optionsForProduct">
-        <option disabled selected> -- select option -- </option>
-    </select>
-    <input id="createPreventiveButton" type="button" value="Create New Preventive"></input>
-    <table id="chosenOptionsTable">
-        <tr>
-            <th>Chosen Options</th>
-        </tr>
-        <tbody id="chosenOptionsForProduct">
-        </tbody>
-    </table>
-
-    <div id="clientPreventivesDiv">
-        <h3><strong>Your Preventives</strong></h3>
-        <table>
-            <tr>
-                <th>Preventive ID</th>
-                <th>Product Code</th>
-                <th>Product Name</th>
-                <th>Link</th>
-            </tr>
-            <tbody id="clientPreventivesTableBody">
-            </tbody>
-        </table>
+    
+    <div id="mainPageDiv">
+	    <h3><strong>Select a product code to create a new preventive: </strong></h3>
+	    <select id="productCodeSelect">
+	        <option disabled selected> -- select a product -- </option>
+	    </select>
+	    <select id="optionsForProduct">
+	        <option disabled selected> -- select option -- </option>
+	    </select>
+	    <input id="createPreventiveButton" type="button" value="Create New Preventive"></input>
+	    <table id="chosenOptionsTable">
+	        <tr>
+	            <th>Chosen Options</th>
+	        </tr>
+	        <tbody id="chosenOptionsForProduct">
+	        </tbody>
+	    </table>
+	
+	    <h3><strong>Your Preventives</strong></h3>
+		<table>
+	        <tr>
+	            <th>Preventive ID</th>
+	            <th>Product Code</th>
+	            <th>Product Name</th>
+	            <th>Link</th>
+	        </tr>
+	        <tbody id="clientPreventivesTableBody">
+	        </tbody>
+	    </table>
     </div>
+    
     <div id="preventiveInfoDiv" class="hiddenElement">
         <h1><strong>Preventive Info</strong></h1>
         <p id="preventiveIDInfo"><strong>Preventive ID:</strong></p>
@@ -67,7 +69,6 @@
             <tbody id="optionInfoTableBody">
             </tbody>
         </table>
-        <input type="button" id="closeInfoPageButton" value="Close Info Page" class="normalButton"/>
     </div>
 </body>
 

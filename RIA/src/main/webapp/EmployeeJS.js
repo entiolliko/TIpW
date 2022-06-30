@@ -109,7 +109,9 @@ function getPreventiveInfo(preventiveID){
 }
 
 function addDataToInfo(isInfoPage, data){
+	document.getElementById("mainPageDiv").className = "hiddenElement";
 	document.getElementById("preventiveInfoDiv").className = "visibleElement";
+	document.getElementById("closeInfoPageButton").className = "normalButton";
 	
 	cleanPrevInfo(isInfoPage);
 	
@@ -171,7 +173,9 @@ function addDataToInfo(isInfoPage, data){
 function closePrevInfo(){
 	cleanPrevInfo();
 	clicked = false;
+		document.getElementById("mainPageDiv").className = "";
 	document.getElementById("preventiveInfoDiv").className = "hiddenElement";
+	document.getElementById("closeInfoPageButton").className = "hiddenElement";
 }
 
 function cleanPrevInfo(isInfoPage){

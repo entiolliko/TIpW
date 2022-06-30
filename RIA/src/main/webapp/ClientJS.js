@@ -6,9 +6,9 @@ var clicked = false;
 let productCToSimpleProductMap;
 
 window.addEventListener("load", function () {
-	if (sessionStorage.getItem("username") == null) {
-			window.location.href = "index.html";
-	} else if (sessionStorage.getItem("role") == "Employee"){
+	if (sessionStorage.getItem("username") == null || sessionStorage.getItem("username") == undefined) {
+		window.location.href = "index.html";
+	} else if (sessionStorage.getItem("role") == "Employee" || sessionStorage.getItem("role") == undefined){
 		window.location.href = "EmployeeHome.html";
 	}
 	
@@ -192,6 +192,7 @@ function readClientPreventives(){
 				newButton.className = "normalButton";
 				newCell.appendChild(newButton);
 				newButton.addEventListener("click", function (){
+					(document.getElementById("mainPageDiv")).className="hiddenElement";
 					getClientPreventiveInfo(this.id);
 				});
 			}
@@ -218,6 +219,7 @@ function getClientPreventiveInfo(preventiveID){
 
 function addDataToInfo(data){
 	document.getElementById("preventiveInfoDiv").className = "visibleElement";
+	document.getElementById("closeInfoPageButton").className = "normalButton";
 	
 	cleanPrevInfo();
 	
@@ -280,7 +282,9 @@ function addDataToInfo(data){
 function closePrevInfo(){
 	cleanPrevInfo();
 	clicked = false;
+	document.getElementById("closeInfoPageButton").className = "hiddenElement";
 	document.getElementById("preventiveInfoDiv").className = "hiddenElement";
+	document.getElementById("mainPageDiv").className = "";
 }
 
 function cleanPrevInfo(){

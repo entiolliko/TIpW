@@ -12,40 +12,39 @@
 
 <body>
     
-    <form>
-        <input id="logOutButton" type="submit" value="Log Out" />
-    </form>
     
-    <h5 id="employeeUsernameHeader"></h5>
-    <p>&nbsp;</p>
-    <h5 id="errMessage"></h5>
-    <p>&nbsp;</p>
-    <h3><strong>Preventives managed by you</strong></h3>
-    <table>
-        <tr>
-            <th>Preventive ID</th>
-            <th>Product Code</th>
-            <th>Product Name</th>
-            <th>Preventive Information</th>
-        </tr>
-        <tbody id="managedPreventivesTableBody">
-        </tbody>
-    </table>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <h3><strong>Preventives not prices</strong></h3>
-    <table>
-        <tr>
-            <th>Preventive ID</th>
-            <th>Product Code</th>
-            <th>Product Name</th>
-            <th></th>
-        </tr>
-        <tbody id="unmanagedPreventivesTableBody">   
-        </tbody>
-    </table>
-    <p>&nbsp;</p>
+    <input type="button" id="closeInfoPageButton" value="Close Info Page" class="hiddenElement"/>
+    <h5 id="employeeUsernameHeader"></h5>   
+    <input id="logOutButton" type="submit" value="Log Out" />
+    
+    <div id="mainPageDiv">
+	    <h3><strong>Preventives managed by you</strong></h3>
+	    <table>
+	        <tr>
+	            <th>Preventive ID</th>
+	            <th>Product Code</th>
+	            <th>Product Name</th>
+	            <th>Preventive Information</th>
+	        </tr>
+	        <tbody id="managedPreventivesTableBody">
+	        </tbody>
+	    </table>
+	    
+	    <br><br>
+	    
+	    <h3><strong>Preventives not prices</strong></h3>
+	    <table>
+	        <tr>
+	            <th>Preventive ID</th>
+	            <th>Product Code</th>
+	            <th>Product Name</th>
+	            <th></th>
+	        </tr>
+	        <tbody id="unmanagedPreventivesTableBody">   
+	        </tbody>
+	    </table>
+	    <br>
+	</div>
     
     <div id="preventiveInfoDiv" class="hiddenElement">
     	<h3 id="errMessage"></h3>
@@ -70,12 +69,9 @@
             <tbody id="optionInfoTableBody">
             </tbody>
         </table>
-        <form>
-	        <input type="text" id="priceInput" placeholder="Insert Price"/>
-	        <input type="button" id="insertPriceButton" value="Insert Price" class="normalButton"/>
-	        <input type="button" id="closeInfoPageButton" value="Close Info Page" class="normalButton"/>
-	    </form>
-    </div>
+        <input type="text" id="priceInput" placeholder="Insert Price"/>
+        <input type="button" id="insertPriceButton" value="Insert Price" class="normalButton"/>
+   	</div>
 </body>
 
 </html>
