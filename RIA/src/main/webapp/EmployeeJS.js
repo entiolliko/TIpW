@@ -1,9 +1,32 @@
 var clicked = false;
 
 
-window.onstorage = checkLogIn;
+window.onstorage = message_receive;
+
+function message_broadcast(message)
+{
+    localStorage.setItem('message',JSON.stringify(message));
+    localStorage.removeItem('message');
+}
+function message_receive(ev)
+{	
+    if (ev.key!="message") return;
+    var message = JSON.parse(ev.newValue);
+    if (!message) return;
+
+    if (message.command == "logout"){ 
+		checkLogIn();
+    }  
+	else if(message.command == "priceUpdated"){
+		closePrevInfo();
+		readEmployeePreventives();
+		readUnManagedPreventives();
+	}
+}
 
 window.addEventListener("load", function () {
+	checkLogIn();
+	
 	//Set up username header
 	let employeeUsernameHeader = document.getElementById("employeeUsernameHeader");
 	let text = document.createTextNode(localStorage.getItem("username"));
@@ -33,8 +56,8 @@ window.addEventListener("load", function () {
 function checkLogIn(){
 	if (localStorage.getItem("username") == null || localStorage.getItem("username") == undefined) {
 		window.location.href = "index.html";
-	} else if (localStorage.getItem("role") == "Employee"){
-		window.location.href = "EmployeeHome.html";
+	} else if (localStorage.getItem("role") == "Client"){
+		window.location.href = "ClientHome.html";
 	}
 }
 
@@ -46,10 +69,8 @@ function logOutButtonClicked() {
 		'success': function (data) {
 			window.location.href = "index.html";
 			
-			window.sessionStorage.removeItem('username');
-			window.sessionStorage.removeItem('role');
-			
 			localStorage.clear();
+			message_broadcast({'command':'logout'});
 		},
 		'error': function (error) {
 			(document.getElementById("errMessage")).textContent = "There has been an error when loging out.";
@@ -177,7 +198,7 @@ function addDataToInfo(isInfoPage, data){
 function closePrevInfo(){
 	cleanPrevInfo();
 	clicked = false;
-		document.getElementById("mainPageDiv").className = "";
+	document.getElementById("mainPageDiv").className = "";
 	document.getElementById("preventiveInfoDiv").className = "hiddenElement";
 	document.getElementById("closeInfoPageButton").className = "hiddenElement";
 }
@@ -283,6 +304,7 @@ function insertPriceButtonClicked(){
 			closePrevInfo();
 			readEmployeePreventives();
 			readUnManagedPreventives();
+			message_broadcast({'command':'priceUpdated'});
 		},
 		'error': function (error) {
 			(document.getElementById("errMessage")).textContent = "It wasn't possible to update the price of the preventive.\n'" + error.responseText;

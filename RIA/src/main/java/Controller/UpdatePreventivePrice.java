@@ -44,8 +44,6 @@ public class UpdatePreventivePrice extends HttpServlet {
 		String preventiveID = request.getParameter("preventiveID");
 		String price = request.getParameter("price"); 
 		PreventiveDAO preventiveDAO = new PreventiveDAO(connection);
-		System.out.println(preventiveID);
-		System.out.println(price);
 		try{
 			if(preventiveID == null) {
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

@@ -1,25 +1,44 @@
+
+window.onstorage = message_receive;
+
+function message_broadcast(message)
+{
+    localStorage.setItem('message',JSON.stringify(message));
+    localStorage.removeItem('message');
+}
+function message_receive(ev)
+{	
+    if (ev.key!="message") return;
+    var message = JSON.parse(ev.newValue);
+    if (!message) return;
+
+    if (message.command == "entered"){ 
+		checkLogIn();
+    }  
+}
+
 window.addEventListener("load", function () {
-	if (localStorage.getItem("role") == "Client") {
-		window.location.href = "ClientHome.html";
-	}else if (localStorage.getItem("role") == "Employee"){
-		window.location.href = "EmployeeHome.html";
-	}
+	checkLogIn();
+	
     var logInButton = document.getElementById("logInButton");
     var registerButton = document.getElementById("registerButton");
     logInButton.addEventListener("click", logInButtonClicked);
     registerButton.addEventListener("click", registerButtonClicked);
 });
 
+function checkLogIn(){
+	if (localStorage.getItem("role") == "Client") {
+		window.location.href = "ClientHome.html";
+	}else if (localStorage.getItem("role") == "Employee"){
+		window.location.href = "EmployeeHome.html";
+	}
+}
+
 function logInButtonClicked() {
     var logInUsername = document.getElementById("logInUsername");
     var logInPassword = document.getElementById("logInPassword");
-    if (logInUsername === null || logInUsername.value === "" || (logInUsername.value).indexOf(' ') >= 0) {
-        (document.getElementById("logInErrorMessage")).textContent = "Please insert a username with no spaces";
-        return;
-    } if (logInPassword === null || logInPassword.value === "" || (logInPassword.value).indexOf(' ') >= 0 || (logInPassword.value).length < 8) {
-        (document.getElementById("logInErrorMessage")).textContent = "Please insert a password with no spaces and at least 8 characters";
-        return;
-    }
+    checkLogIn();
+    
 	$.ajax({
 		'url': 'CheckLogIn',
 		'type': 'POST',
@@ -29,6 +48,7 @@ function logInButtonClicked() {
         	
         	localStorage.setItem("username", message.username);
         	localStorage.setItem("role", message.role);
+        	message_broadcast({'command':'entered'});
         	
             if (message.role == "Client") {
                 window.location.href = "ClientHome.html";
@@ -76,6 +96,7 @@ function registerButtonClicked(e) {
         	
         	localStorage.setItem("username", user.username);
         	localStorage.setItem("role", user.role);
+        	message_broadcast({'command':'entered'});
         	
 	        if(user.role == "Client"){
 	            window.location.href = "ClientHome.html";

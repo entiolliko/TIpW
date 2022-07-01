@@ -2,7 +2,25 @@ var optionList = [];
 var clicked = false;
 let productCToSimpleProductMap;
 
-window.onstorage = checkLogIn;
+window.onstorage = message_receive;
+
+function message_broadcast(message)
+{
+    localStorage.setItem('message',JSON.stringify(message));
+    localStorage.removeItem('message');
+}
+function message_receive(ev)
+{	
+    if (ev.key!="message") return;
+    var message = JSON.parse(ev.newValue);
+    if (!message) return;
+
+    if (message.command == "logout"){ 
+		checkLogIn();
+    }  
+	else if(message.command == "preventiveCreated") 
+		readClientPreventives();
+}
 
 window.addEventListener("load", function () {
 	//Checks whether the user is loged or not
@@ -54,6 +72,7 @@ function logOutButtonClicked() {
 		'success': function () {
 			window.location.href = "index.html";
 			localStorage.clear();
+			message_broadcast({'command':'logout'});
 		},
 		'error': function () {
 			(document.getElementById("errMessage")).textContent = "There has been an error when loging out.";
@@ -155,7 +174,10 @@ function createPreventive(){
 		'url': 'AddPreventiveToDB',
 		'type': 'POST',
 		'data': "productCode=" + productCode + "&options=" + serializedOptionList,
-		'success': readClientPreventives,
+		'success': function(){
+			message_broadcast({'command':'preventiveCreated'});
+			readClientPreventives();
+		},
 		'error': function (error) {
 			(document.getElementById("errMessage")).textContent = error.responseText;
 		}
