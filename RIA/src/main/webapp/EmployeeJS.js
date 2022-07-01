@@ -1,18 +1,12 @@
-//TODO: Go Back Button - Needs to be tested 
-//TODO: Log out button
-
 var clicked = false;
 
+
+window.onstorage = checkLogIn;
+
 window.addEventListener("load", function () {
-	if (sessionStorage.getItem("username") == null) {
-			window.location.href = "index.html";
-	} else if(sessionStorage.getItem("role") == "Client"){
-		window.location.href = "ClientHome.html";
-	}
-	
 	//Set up username header
-	let employeeUsernameHeader = this.document.getElementById("employeeUsernameHeader");
-	let text = document.createTextNode(this.sessionStorage.getItem("username"));
+	let employeeUsernameHeader = document.getElementById("employeeUsernameHeader");
+	let text = document.createTextNode(localStorage.getItem("username"));
 	employeeUsernameHeader.appendChild(text);
 
 	//Set up log out button 
@@ -36,6 +30,14 @@ window.addEventListener("load", function () {
 	document.getElementById("insertPriceButton").addEventListener("click", insertPriceButtonClicked);
 });
 
+function checkLogIn(){
+	if (localStorage.getItem("username") == null || localStorage.getItem("username") == undefined) {
+		window.location.href = "index.html";
+	} else if (localStorage.getItem("role") == "Employee"){
+		window.location.href = "EmployeeHome.html";
+	}
+}
+
 //Log Out Button Handler
 function logOutButtonClicked() {
 	$.ajax({
@@ -46,6 +48,8 @@ function logOutButtonClicked() {
 			
 			window.sessionStorage.removeItem('username');
 			window.sessionStorage.removeItem('role');
+			
+			localStorage.clear();
 		},
 		'error': function (error) {
 			(document.getElementById("errMessage")).textContent = "There has been an error when loging out.";
@@ -275,7 +279,7 @@ function insertPriceButtonClicked(){
 		'url': 'UpdatePreventivePrice',
 		'type': 'POST',
 		'data': "preventiveID=" + preventiveID + "&price=" + insertedPrice,
-		'success': function(data){
+		'success': function(){
 			closePrevInfo();
 			readEmployeePreventives();
 			readUnManagedPreventives();

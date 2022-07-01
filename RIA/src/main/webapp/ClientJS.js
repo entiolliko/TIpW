@@ -1,20 +1,16 @@
-//TODO: Go Back Button - Needs to be tested 
-//TODO: Log out button
-
 var optionList = [];
 var clicked = false;
 let productCToSimpleProductMap;
 
+window.onstorage = checkLogIn;
+
 window.addEventListener("load", function () {
-	if (sessionStorage.getItem("username") == null || sessionStorage.getItem("username") == undefined) {
-		window.location.href = "index.html";
-	} else if (sessionStorage.getItem("role") == "Employee" || sessionStorage.getItem("role") == undefined){
-		window.location.href = "EmployeeHome.html";
-	}
+	//Checks whether the user is loged or not
+	checkLogIn();
 	
 	//Set up username header
 	let userNameHeader = this.document.getElementById("clientUsernameHeader");
-	let text = document.createTextNode(this.sessionStorage.getItem("username"));
+	let text = document.createTextNode(this.localStorage.getItem("username"));
 	userNameHeader.appendChild(text);
 
 	//Set up log out button 
@@ -42,16 +38,22 @@ window.addEventListener("load", function () {
 	closeInfoPageButton.addEventListener("click", closePrevInfo);
 });
 
+function checkLogIn(){
+	if (localStorage.getItem("username") == null || localStorage.getItem("username") == undefined) {
+		window.location.href = "index.html";
+	} else if (localStorage.getItem("role") == "Employee"){
+		window.location.href = "EmployeeHome.html";
+	}
+}
+
 //Log Out Button Handler
-function logOutButtonClicked(e) {
+function logOutButtonClicked() {
 	$.ajax({
 		'url': 'LogOut',
 		'type': 'GET',
-		'success': function (data) {
+		'success': function () {
 			window.location.href = "index.html";
-			
-			window.sessionStorage.removeItem('username');
-			window.sessionStorage.removeItem('role');
+			localStorage.clear();
 		},
 		'error': function () {
 			(document.getElementById("errMessage")).textContent = "There has been an error when loging out.";
@@ -109,7 +111,7 @@ function renderOptionsForSelectedProduct() {
 function addSelectedOption(){
 	//Prende l'opzione selezionata
 	var options = document.getElementById("optionsForProduct");
-	if(options.options[options.selectedIndex] === undefined)
+	if(options.options[options.selectedIndex] == undefined)
 		return;
 	var optionID = options.options[options.selectedIndex].text;
  	options.removeChild(document.getElementById(optionID));
@@ -122,6 +124,7 @@ function addSelectedOption(){
 	var newText = document.createTextNode(optionID);
 	newCell.appendChild(newText);
 	newRow.addEventListener("click", function(){
+		//Quando clichiamo sull'opzione, essa viene rimessa nella lista originale
 		let availableOptions = document.getElementById("optionsForProduct");
 		let child = document.createElement("option");
 		child.id = ($(event.target)).text();
