@@ -20,7 +20,7 @@ function message_receive(ev)
 window.addEventListener("load", function () {
 	checkLogIn();
 	
-    var logInButton = document.getElementById("logInButton");
+    var logInButton = document.getElementById("loginButton");
     var registerButton = document.getElementById("registerButton");
     logInButton.addEventListener("click", logInButtonClicked);
     registerButton.addEventListener("click", registerButtonClicked);

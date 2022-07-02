@@ -72,47 +72,30 @@ public class CheckRegistration extends HttpServlet {
 		CredentialsDAO credentialsDAO = new CredentialsDAO(connection);
 		boolean success;
 		
+		String errorMsg = "";
+		boolean credentialsAreOk = true;
+		
 		if(username == null || username == "" || username.contains(" ")) {
-			ServletContext servletContext = getServletContext();
-			final WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
-			ctx.setVariable("errorMessageReg", "You have to insert a username!");
-			String LogInPath = "/WEB-INF/LogInPage.html";
-			templateEngine.process(LogInPath, ctx, response.getWriter());
-			return;
+			errorMsg = "You have to insert a username!";
+			credentialsAreOk = false;
 		}
-		
-		if(password == null || password == "" || password.contains(" ")) {
-			ServletContext servletContext = getServletContext();
-			final WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
-			ctx.setVariable("errorMessageReg", "You have to insert a password!");
-			String path = "/WEB-INF/LogInPage.html";
-			templateEngine.process(path, ctx, response.getWriter());
-			return;
+		if(password == null || password == "" || password.contains(" ") || password.length() < 8) {
+			errorMsg = "You have to insert a password with at least 8 characters";
+			credentialsAreOk = false;
 		}
-		
-		if(password.length() < 8) {
-			ServletContext servletContext = getServletContext();
-			final WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
-			ctx.setVariable("errorMessageReg", "The password must have at least 8 characters!");
-			String path = "/WEB-INF/LogInPage.html";
-			templateEngine.process(path, ctx, response.getWriter());
-			return;
-		}
-		
 		if(!(password.equals(passwordCheck))) {
-			ServletContext servletContext = getServletContext();
-			final WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
-			ctx.setVariable("errorMessageReg", "The passwords must match");
-			String path = "/WEB-INF/LogInPage.html";
-			templateEngine.process(path, ctx, response.getWriter());
-			return;	
+			errorMsg = "The passwords must match";
+			credentialsAreOk = false;
+		}
+		if(userRole == null || userRole == "") {
+			errorMsg = "You have to choose a role!";
+			credentialsAreOk = false;
 		}
 		
-		
-		if(userRole == null || userRole == "") {
+		if(!credentialsAreOk) {
 			ServletContext servletContext = getServletContext();
 			final WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
-			ctx.setVariable("errorMessageReg", "You have to choose a role!");
+			ctx.setVariable("errorMessageReg", errorMsg);
 			String path = "/WEB-INF/LogInPage.html";
 			templateEngine.process(path, ctx, response.getWriter());
 			return;
@@ -131,7 +114,7 @@ public class CheckRegistration extends HttpServlet {
 			else {
 				User user;
 
-				if(userRole.equals(UserRoleEnum.Client))
+				if(userRole.equals(UserRoleEnum.Client.toString()))
 					user = new User(username, UserRoleEnum.valueOf(userRole), contextPath + "/GetClientHomePage");
 				else 
 					user = new User(username, UserRoleEnum.valueOf(userRole), contextPath + "/GetEmployeeHomePage");

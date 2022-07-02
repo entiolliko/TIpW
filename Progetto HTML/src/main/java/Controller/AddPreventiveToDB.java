@@ -103,14 +103,14 @@ public class AddPreventiveToDB extends HttpServlet {
 		try {
 			preventiveToAdd.setProductName((preventiveDAO).getProductNameByCode(productCode));
 		} catch (SQLException e) {
-			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "We cannot identify the type of user.");
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "We cannot get the product name at the moment.");
 			return;
 		}
 
 		try {
 			preventiveDAO.addPreventive(preventiveToAdd);
 		} catch (SQLException e) {
-			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "We cannot identify the type of user.");
+			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "We cannot add the preventive to the DB at the moment.");
 			return;
 		}
 		

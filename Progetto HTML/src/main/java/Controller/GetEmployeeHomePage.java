@@ -43,16 +43,16 @@ public class GetEmployeeHomePage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Preventive> preventivesMenagedByEmployee = new ArrayList<>();
-		List<Preventive> unmenagedPreventives = new ArrayList<>();
+		List<Preventive> preventivesManagedByEmployee = new ArrayList<>();
+		List<Preventive> unmanagedPreventives = new ArrayList<>();
 		
 		PreventiveDAO preventiveDAO = new PreventiveDAO(connection);
 		
 		User user = (User)request.getSession().getAttribute("user");
 		
 		try {
-			preventivesMenagedByEmployee = preventiveDAO.getPreventivesByEmployee(user.getUsername());
-			unmenagedPreventives = preventiveDAO.getUnmanagedPreventives();
+			preventivesManagedByEmployee = preventiveDAO.getPreventivesByEmployee(user.getUsername());
+			unmanagedPreventives = preventiveDAO.getUnmanagedPreventives();
 		}
 		catch(SQLException e){
 			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "We cannot reach the server to get your preventives");
@@ -69,8 +69,8 @@ public class GetEmployeeHomePage extends HttpServlet {
 		String ClientHomePath ="/WEB-INF/HomePageEmployee.html";
 		ServletContext servletContext = getServletContext();
 		final WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
-		ctx.setVariable("preventives", preventivesMenagedByEmployee);
-		ctx.setVariable("unmanagedPreventives", unmenagedPreventives);
+		ctx.setVariable("preventives", preventivesManagedByEmployee);
+		ctx.setVariable("unmanagedPreventives", unmanagedPreventives);
 		templateEngine.process(ClientHomePath, ctx, response.getWriter());
 	}
 
