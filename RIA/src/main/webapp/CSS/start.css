@@ -8,20 +8,20 @@ h2 {
 }
 
 .start {
-	background-image: url("/TIW_-_Progetto_HTML/resources/sfondo.jpg");
+	background-image: url("/TIW_-_RIA/resources/sfondo.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-attachment: fixed;
+	background-attachment: scroll;
 }
 
 .welcome {
-	text-align:center;
 	margin-left:auto;
 	margin-right:auto;
 	width: max-content;
-	background-color:#f2f2f2;
+	font-size:20px;
+	color:white;
 	opacity: 0.9;
-	border-radius: 5px;
+	border-radius: 10px;
 }
 
 input[type="password"] {
@@ -42,10 +42,9 @@ input[type="text"] {
 	background-color: #f2f2f2;
 	opacity: 0.9;
 	padding: 20px;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 15%;
 	text-align: center;
-	margin-top:3%;
+	margin-top:5%;
 	
 }
 #loginButton{
@@ -76,7 +75,9 @@ input[type="text"] {
 	background-color: #45a049;
 	border-radius:6px;
 }
-
+p{
+	margin-top:0%;	
+}
 
 .divselect{
 	text-align:center;
@@ -87,23 +88,17 @@ form[action="SelectOptionsForProduct"] {
 	margin-right:auto;
 }
 
-table{
-	margin-left:auto;
-	margin-right:auto;
-}
-
-
 tr{
 	height: 28.8833px;
 }
 
 td{
-	width: 140.333px; 
+	width: 133px; 
 	height: 30px;
 	text-align: center;
 }
 
-.button3{
+.newButton{
 	width: 100px;
 	background-color:#3465a4;
 	border:none;
@@ -111,6 +106,6 @@ td{
 	border-radius:6px;
 }
 
-.button3:hover{
+.newButton:hover{
 	background-color:#729fcf;
 }
