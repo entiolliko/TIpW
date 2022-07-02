@@ -63,14 +63,16 @@ input[type="submit"]{
 }
 
 .button7{
-	background-color:#177245;
-	border:none;
-	color: white;
+	cursor:pointer;
+	background-color:white;
+	border:2px solid black;;
+	color:#177245;
 	border-radius:6px;
 }
 
 .button7:hover{
-	background-color:#729fcf;
+	background-color:#177245;
+	color:white;
 }
 
 #pricePreventive{
