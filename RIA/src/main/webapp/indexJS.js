@@ -26,6 +26,12 @@ window.addEventListener("load", function () {
     registerButton.addEventListener("click", registerButtonClicked);
 });
 
+function validateEmail(email) 
+{
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
 function checkLogIn(){
 	if (localStorage.getItem("role") == "Client") {
 		window.location.href = "ClientHome.html";
@@ -37,7 +43,11 @@ function checkLogIn(){
 function logInButtonClicked() {
     var logInUsername = document.getElementById("logInUsername");
     var logInPassword = document.getElementById("logInPassword");
-    checkLogIn();
+ 	
+ 	if(logInUsername === null || logInUsername.value == "" || (logInUsername.value).indexOf(' ') >= 0 || !validateEmail(logInUsername.value)){
+        (document.getElementById("logInErrorMessage")).textContent = "Please insert an correctly formated email";
+        return;
+    }
     
 	$.ajax({
 		'url': 'CheckLogIn',
@@ -73,8 +83,8 @@ function registerButtonClicked(e) {
     var userRoleSelect = document.getElementById("userRole")
     var userRole = userRoleSelect.options[userRoleSelect.selectedIndex].text;
 
-    if(username === null || username.value == "" || (username.value).indexOf(' ') >= 0){
-        (document.getElementById("regErrorMessage")).textContent = "Please insert a username with no spaces";
+    if(username === null || username.value == "" || (username.value).indexOf(' ') >= 0 || !validateEmail(username.value)){
+        (document.getElementById("regErrorMessage")).textContent = "Please insert an correctly formated email";
         return;
     } if(password === null || password.value == "" || password.value.indexOf(" ") >= 0 || (password.value).length < 8){
         (document.getElementById("regErrorMessage")).textContent = "Please insert a password with no spaces and at least 8 characters";
