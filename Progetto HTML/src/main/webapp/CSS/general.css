@@ -121,4 +121,6 @@ input[type="submit"]{
 	text-align:center;
 }
 
-
+.error{
+	text-align:center;
+}
