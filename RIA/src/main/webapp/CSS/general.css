@@ -34,6 +34,10 @@ input[type="button"]{
 	cursor:pointer;
 }
 
+input[type="submit"] {
+	cursor:pointer;
+}
+
 #closeInfoPageButton {
 	border-radius: 6px;
 	font-size: 15px;
@@ -68,18 +72,7 @@ input[type="button"]{
 	border-radius: 6px;	
 }
 
-.button7{
-	background-color:#177245;
-	border:none;
-	color: white;
-	border-radius:6px;
-}
-
-.button7:hover{
-	background-color:#729fcf;
-}
-
-#insertPriceButton{
+#pricePreventive{
 	font-size: 15px;
 	font-weight: bold;
 	border-radius: 6px;
@@ -88,21 +81,7 @@ input[type="button"]{
 	color:white;
 }
 
-#insertPriceButton:hover{
-	border-radius: 6px;
-	background-color: #008F39;
-}
-
-#addPreventiveButton{
-	font-size: 15px;
-	font-weight: bold;
-	border-radius: 6px;
-	background-color:#177245;
-	border: none;
-	color:white;
-}
-
-#addPreventiveButton:hover{
+#pricePreventive:hover{
 	border-radius: 6px;
 	background-color: #008F39;
 }
@@ -129,6 +108,9 @@ p{
 	margin-top:0px;
 }
 
+#mainPageDiv{
+	text-align:center;
+}
 .hiddenElement{
 	display: none;
 }
