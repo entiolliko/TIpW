@@ -72,7 +72,7 @@ input[type="submit"] {
 	border-radius: 6px;	
 }
 
-#pricePreventive{
+#insertPriceButton{
 	font-size: 15px;
 	font-weight: bold;
 	border-radius: 6px;
@@ -81,7 +81,7 @@ input[type="submit"] {
 	color:white;
 }
 
-#pricePreventive:hover{
+#insertPriceButton:hover{
 	border-radius: 6px;
 	background-color: #008F39;
 }
