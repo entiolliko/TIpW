@@ -79,7 +79,7 @@ input[type="button"]{
 	background-color:#729fcf;
 }
 
-#pricePreventive{
+#insertPriceButton{
 	font-size: 15px;
 	font-weight: bold;
 	border-radius: 6px;
@@ -88,7 +88,7 @@ input[type="button"]{
 	color:white;
 }
 
-#pricePreventive:hover{
+#insertPriceButton:hover{
 	border-radius: 6px;
 	background-color: #008F39;
 }
@@ -127,4 +127,12 @@ input[type="button"]{
 
 p{
 	margin-top:0px;
+}
+
+.hiddenElement{
+	display: none;
+}
+
+.visibleElement{
+	display: grid;
 }

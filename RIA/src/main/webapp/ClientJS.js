@@ -309,7 +309,7 @@ function closePrevInfo(){
 	clicked = false;
 	document.getElementById("closeInfoPageButton").className = "hiddenElement";
 	document.getElementById("preventiveInfoDiv").className = "hiddenElement";
-	document.getElementById("mainPageDiv").className = "";
+	document.getElementById("mainPageDiv").className = "divselect";
 }
 
 function cleanPrevInfo(){

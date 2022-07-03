@@ -8,7 +8,7 @@ h2 {
 }
 
 .start {
-	background-image: url("/TIW_-_RIA/resources/sfondo.jpg");
+	background-image: url("../resources/sfondo.webp");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: scroll;
