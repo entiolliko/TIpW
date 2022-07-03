@@ -75,17 +75,9 @@ input[type="text"] {
 	background-color: #45a049;
 	border-radius:6px;
 }
-p{
-	margin-top:0%;	
-}
 
 .divselect{
 	text-align:center;
-}
-
-form[action="SelectOptionsForProduct"] {
-	margin-left:auto;
-	margin-right:auto;
 }
 
 tr{
@@ -98,14 +90,3 @@ td{
 	text-align: center;
 }
 
-.newButton{
-	width: 100px;
-	background-color:#3465a4;
-	border:none;
-	color: white;
-	border-radius:6px;
-}
-
-.newButton:hover{
-	background-color:#729fcf;
-}
