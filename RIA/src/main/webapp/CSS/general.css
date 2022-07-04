@@ -72,19 +72,6 @@ input[type="submit"] {
 	border-radius: 6px;	
 }
 
-#insertPriceButton{
-	font-size: 15px;
-	font-weight: bold;
-	border-radius: 6px;
-	background-color:#177245;
-	border: none;
-	color:white;
-}
-
-#insertPriceButton:hover{
-	border-radius: 6px;
-	background-color: #008F39;
-}
 
 #createPreventiveButton{
 	font-size: 15px;
@@ -111,10 +98,37 @@ p{
 #mainPageDiv{
 	text-align:center;
 }
+#insertPriceButton{
+	width:150px;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 6px;
+	background-color:#177245;
+	border: none;
+	color:white;
+}
+
+#insertPriceButton:hover{
+	border-radius: 6px;
+	background-color: #008F39;
+}
 .hiddenElement{
 	display: none;
 }
 
 .visibleElement{
 	display: grid;
+}
+
+.managedPreventivesTableBody[type=button] {
+	cursor:pointer;
+	background-color:white;
+	border:2px solid black;;
+	color:#177245;
+	border-radius:6px;
+}
+
+.managedPreventivesTableBody[type=button]:hover {
+	background-color:#177245;
+	color:white;
 }
