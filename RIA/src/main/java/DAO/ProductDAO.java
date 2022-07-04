@@ -17,7 +17,7 @@ public class ProductDAO {
 		this.connection = connection;
 	}
 	
-	//Finora sembra ok
+	
 	public List<Product> getAllProducts() throws SQLException{
 		List<Product> products = new ArrayList<Product>();
 		

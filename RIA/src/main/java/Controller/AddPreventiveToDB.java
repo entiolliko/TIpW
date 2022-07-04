@@ -41,7 +41,6 @@ public class AddPreventiveToDB extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO: La stessa cosa come la pagina CheckLogIn. In teoria non serve gestire questo caso
 	}
 
 	/** 

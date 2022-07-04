@@ -38,7 +38,6 @@ public class CheckRegistration extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//In teoria visto che io faccio tutte le richieste con js non ho bisogno di gestire l'accesso diretto con GET	
 	}
 
 	/**

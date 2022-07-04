@@ -14,7 +14,7 @@ public class CredentialsDAO {
 		this.connection = connection;
 	}
 	
-	//Sembra che funzioni
+	
 	public UserRoleEnum checkCredentials(String username, String password) throws SQLException { 
 		String queryClient = "SELECT Username FROM TIW_Progetto.CLIENT WHERE Username = ? AND Password = ?";
 		String queryEmployee = "SELECT Username FROM TIW_Progetto.EMPLOYEE WHERE Username = ? AND Password = ?";
