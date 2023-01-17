@@ -1,0 +1,134 @@
+table, th, tr {
+  border: 3px solid black;
+}
+#Optionforpreventive{
+	margin-left:0px;
+}
+		
+td {
+	border: 1px solid black;
+}
+th {
+	height:40px;
+	background-color:#ED7014;
+	color:white;
+}
+tr:nth-child(odd){
+	 background-color: white;
+}
+tr:nth-child(even){
+	 background-color:  #dedede;
+}
+
+table{
+	background-color: white;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+table:hover{
+	background: #FFF;
+}
+
+input[type="button"]{
+	cursor:pointer;
+}
+
+input[type="submit"] {
+	cursor:pointer;
+}
+
+#closeInfoPageButton {
+	border-radius: 6px;
+	font-size: 15px;
+	font-weight: bold;
+	background-color: #3465a4;
+	color:white;
+	border: none;
+  	position: absolute;
+  	top: 10px;
+  	left:8px
+}
+  
+#closeInfoPageButton:hover{
+	border-radius: 6px;
+	background-color: #729fcf;
+}
+
+#logOutButton{
+	border-radius: 6px;
+	font-size: 15px;
+	font-weight: bold;
+	background-color:#ff0000;
+	color:white;
+	border:none;
+  	position: absolute;
+  	top: 10px;
+  	right:8px;
+} 
+
+#logOutButton:hover{
+	background-color: #f85f5f;
+	border-radius: 6px;	
+}
+
+
+#createPreventiveButton{
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 6px;
+	background-color:#177245;
+	border: none;
+	color:white;
+}
+
+#createPreventiveButton:hover{
+	border-radius: 6px;
+	background-color:#008F39;
+}
+
+#productCodeSelect{
+	text-align:center;
+}
+
+p{
+	margin-top:0px;
+}
+
+#mainPageDiv{
+	text-align:center;
+}
+#insertPriceButton{
+	width:150px;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 6px;
+	background-color:#177245;
+	border: none;
+	color:white;
+}
+
+#insertPriceButton:hover{
+	border-radius: 6px;
+	background-color: #008F39;
+}
+.hiddenElement{
+	display: none;
+}
+
+.visibleElement{
+	display: grid;
+}
+
+.managedPreventivesTableBody[type=button] {
+	cursor:pointer;
+	background-color:white;
+	border:2px solid black;;
+	color:#177245;
+	border-radius:6px;
+}
+
+.managedPreventivesTableBody[type=button]:hover {
+	background-color:#177245;
+	color:white;
+}

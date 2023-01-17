@@ -1,0 +1,92 @@
+h1,h3,h5{
+	font-family: 'Orbitron', courier, sans-serif;
+	text-align:center;
+}
+
+h2 {
+	text-decoration:underline;
+}
+
+.start {
+	background-image: url("../resources/sfondo.webp");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: scroll;
+}
+
+.welcome {
+	margin-left:auto;
+	margin-right:auto;
+	width: max-content;
+	font-size:20px;
+	color:white;
+	opacity: 0.9;
+	border-radius: 10px;
+}
+
+input[type="password"] {
+	width: 210px;
+	height: 20px;
+	border: 1px solid black;
+}
+
+input[type="text"] {
+	width: 210px;
+	height: 20px;
+	border:  1px solid black;
+}
+
+.divlogin{
+	width: 30%;
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	opacity: 0.9;
+	padding: 20px;
+	margin-left: 15%;
+	text-align: center;
+	margin-top:5%;
+	
+}
+#loginButton{
+	background-color: #4CAF50;
+	color:white;
+	border:none;
+	border-radius:6px;
+	font-size: 15px;
+	font-weight: bold;
+	
+}
+
+#loginButton:hover {
+	background-color: #45a049;
+	border-radius:6px;
+}
+
+#registerButton {
+	background-color: #4CAF50;
+	color:white;
+	border:none;
+	border-radius:6px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#registerButton:hover {
+	background-color: #45a049;
+	border-radius:6px;
+}
+
+.divselect{
+	text-align:center;
+}
+
+tr{
+	height: 28.8833px;
+}
+
+td{
+	width: 133px; 
+	height: 30px;
+	text-align: center;
+}
+
