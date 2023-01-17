@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Option Selection</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="../CSS/general.css" th:href="@{/CSS/general.css}" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../CSS/info.css" th:href="@{/CSS/info.css}" />
+	</head>
+	<body>
+		<form method="GET" th:action="${session.user.getLastVisitedPage()}">
+			<input type="hidden" th:name="${session.user.getParamName()}" th:value="${session.user.getParam()}"/>
+			<input type="hidden" name="goBackButton" value = ""/>
+			<input id="goBackButton" type="submit" value="Go Back &#11144" />
+		</form>
+		<form action="LogOut" method="POST"><input id="logOutButton" type="submit" value="Log Out &#10008" /></form>
+		<p>&nbsp;</p>		
+		<h1><strong>Select options for the new preventive</strong></h1>
+		<p>&nbsp;</p>
+		<p><strong>Product Code:</strong> <span th:text="${productCode}"></span></p>
+		<fieldset>
+    		<legend>Choose the options:</legend>
+    		<form action="AddPreventiveToDB" method="POST">
+    			<input type="hidden" name="productCode" th:value="${productCode}"/>
+    			<div th:each="option : ${options}">
+      				<input type="checkbox" th:name="${option}" th:value="${option}">
+      				<label th:text="${option}">Scales</label>
+    			</div>
+    			<p>&nbsp;</p>
+				<input id="addPreventiveButton" type="submit" value="Create Preventive &#x2192"/>
+			</form>
+		</fieldset>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+<link rel="stylesheet" type="text/css" media="all"
+	href="../CSS/general.css" th:href="@{/CSS/general.css}" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../CSS/start.css" th:href="@{/CSS/start.css}" />
+		<title>Login page</title>
+	</head>
+
+	<body class=start>
+		<p>&nbsp;</p>
+			<div class="basic">
+				<div class="welcome">
+					<h1><span>HOME PAGE</span></h1>
+				</div>
+			<div class="divlogin">
+				<h2>Please Log In</h2>
+					<form action="CheckLogIn" method="POST">
+							<input name="username" required type="text" placeholder="Insert Your Username" /> <br>
+							<br>
+							<input name="password" required type="password" placeholder="Insert Your Password" /> <br>
+							<br>
+							<input id="loginButton" type="submit" value="Login" />
+				</form>
+				<span th:text="${errorMessageLog}"></span>
+			</div>
+			<div class="divlogin">
+				<h2>Please Register</h2>
+					<form action="CheckRegistration" method="POST">
+							<input name="username" required type="text" placeholder="Insert the desired username" /> <br>
+							<br> 
+							<input name="password" required type="password" placeholder="Insert the desired password" /> <br>
+							<br>
+							<input name="passwordCheck" required type="password" placeholder="Insert the desired password again" /> <br>
+							<br>
+							<select id="userRole" name="userRole">
+							<option value="Client">Client</option>
+							<option value="Employee">Employee</option>					
+					</select><input id="registerButton" type="submit" value="Register" />
+				</form>
+				<span th:text="${errorMessageReg}"></span>
+			</div>
+		</div>
+	</body>
+</html> 
